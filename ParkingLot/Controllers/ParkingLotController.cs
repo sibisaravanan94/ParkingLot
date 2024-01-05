@@ -9,14 +9,14 @@ namespace ParkingLot.Controllers
     public class ParkingLotController : ControllerBase
     {
         [HttpPost]
-        public IActionResult createParkingLot(CreateParkingLotRequest createParkingLotRequest)
+        public IActionResult createParkingLot( CreateParkingLotRequest createParkingLotRequest)
         {
             // Validate incoming request
-            if (!validateCreateParkingLotRequest(createParkingLotRequest))
-            {
-                return BadRequest();
-            }
-            ParkingLotModel parkingLot = createParkingLotRequest.transformToParkingLot();
+            //if (!validateCreateParkingLotRequest(createParkingLotRequest))
+            //{
+            //    return BadRequest();
+            //}
+            //ParkingLotModel parkingLot = createParkingLotRequest.transformToParkingLot();
             // If possible convet the dto to model
 
             return Accepted();
@@ -47,16 +47,16 @@ namespace ParkingLot.Controllers
 
         private bool validateCreateParkingLotRequest(CreateParkingLotRequest createParkingLotRequest)
         {
-            if (createParkingLotRequest.floors.Count() < 0)
-            {
-                return false;
-            }
-            if(createParkingLotRequest.floors.Where(floor => floor.NumberOfLargeSpots<0 
-                || floor.NumberOfMediumSpots<0 
-                || floor.NumberOfSmallSpots < 0).Count() > 0)
-            {
-                return false;
-            }
+            //if (createParkingLotRequest.floors.Count() < 0)
+            //{
+            //    return false;
+            //}
+            //if(createParkingLotRequest.floors.Where(floor => floor.NumberOfLargeSpots<0 
+            //    || floor.NumberOfMediumSpots<0 
+            //    || floor.NumberOfSmallSpots < 0).Count() > 0)
+            //{
+            //    return false;
+            //}
             return true;
         }
     }
