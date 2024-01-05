@@ -1,6 +1,6 @@
 ﻿namespace ParkingLot.Models
 {
-    public class ParkingLot : BaseModel
+    public class ParkingLotModel : BaseModel
     {
         public string Name { get; set; }
         public string Adress { get; set; }
