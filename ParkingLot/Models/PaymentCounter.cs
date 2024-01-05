@@ -1,6 +1,6 @@
 ﻿namespace ParkingLot.Models
 {
-    public class PaymentCounter
+    public class PaymentCounter : BaseModel
     {
     }
 }

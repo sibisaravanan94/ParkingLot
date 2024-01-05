@@ -1,6 +1,6 @@
 ﻿namespace ParkingLot.Models
 {
-    public class DisplayBoard
+    public class GateStatus
     {
     }
 }
