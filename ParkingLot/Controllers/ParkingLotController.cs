@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ParkingLot.DTO;
 using ParkingLot.Models;
+using ParkingLot.Service;
 
 namespace ParkingLot.Controllers
 {
@@ -8,18 +9,27 @@ namespace ParkingLot.Controllers
     [Route("[controller]")]
     public class ParkingLotController : ControllerBase
     {
+        private ParkingLotService _ParkingLotService; 
+        public ParkingLotController(ParkingLotService ParkingLotService)
+        {
+            _ParkingLotService = ParkingLotService;
+        }
         [HttpPost]
         public IActionResult createParkingLot( CreateParkingLotRequest createParkingLotRequest)
         {
             // Validate incoming request
-            //if (!validateCreateParkingLotRequest(createParkingLotRequest))
-            //{
-            //    return BadRequest();
-            //}
-            //ParkingLotModel parkingLot = createParkingLotRequest.transformToParkingLot();
-            // If possible convet the dto to model
+            if (!validateCreateParkingLotRequest(createParkingLotRequest))
+            {
+                return BadRequest();
+            }
 
-            return Accepted();
+            // If possible convet the dto to model
+            //ParkingLotModel parkingLot = createParkingLotRequest.transformToParkingLot();
+
+            //  Call service class to perform business logics
+            ParkingLotModel pakingLotModel = _ParkingLotService.createParkingLot(createParkingLotRequest);
+
+            return Accepted(pakingLotModel);
         }
 
         
