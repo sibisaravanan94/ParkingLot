@@ -7,12 +7,9 @@ namespace ParkingLot.Service
     {
         internal List<ParkingFloor> CreateParkingFloor(List<CreateParkingFloorRequest> floors)
         {
-            throw new NotImplementedException();
+            return new List<ParkingFloor>();
         }
 
-        internal List<ParkingGate> CreateParkingGates(int numberOfEntryGates, GateType entry)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

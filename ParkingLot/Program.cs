@@ -8,7 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSingleton<ParkingLotService, ParkingLotService>();
+builder.Services.AddSingleton<ParkingGateService, ParkingGateService>();
 builder.Services.AddSingleton<IParkingLotRepository, ParkingLotRepository>();
+builder.Services.AddSingleton<IParkingGateRepository, ParkingGateRepository>();
 
 var app = builder.Build();
 

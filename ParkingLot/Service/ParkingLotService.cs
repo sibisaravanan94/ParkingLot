@@ -7,16 +7,19 @@ namespace ParkingLot.Service
     public class ParkingLotService
     {
         private IParkingLotRepository _parkingLotRepository;
-        public ParkingLotService(IParkingLotRepository parkingLotRepository)
+        private ParkingGateService _parkingGateService;
+        public ParkingLotService(IParkingLotRepository parkingLotRepository, ParkingGateService parkingGateService)
         {
             _parkingLotRepository = parkingLotRepository;
+            _parkingGateService = parkingGateService;
         }
         internal ParkingLotModel createParkingLot(CreateParkingLotRequest createParkingLotRequest)
         {
             ParkingFloorService parkingFloorService = new ParkingFloorService();
+
             List<ParkingFloor> parkingFloors = parkingFloorService.CreateParkingFloor(createParkingLotRequest.floors);
-            List<ParkingGate> EntryGates = parkingFloorService.CreateParkingGates(createParkingLotRequest.NumberOfEntryGates, GateType.Entry);
-            List<ParkingGate> ExitGates = parkingFloorService.CreateParkingGates(createParkingLotRequest.NumberOfEntryGates, GateType.Exit);
+            List<ParkingGate> EntryGates = _parkingGateService.CreateParkingGates(createParkingLotRequest.NumberOfEntryGates, GateType.Entry);
+            List<ParkingGate> ExitGates = _parkingGateService.CreateParkingGates(createParkingLotRequest.NumberOfEntryGates, GateType.Exit);
             
             ParkingLotModel parkingLotModel = new ParkingLotModel();
             parkingLotModel.Name = createParkingLotRequest.Name;

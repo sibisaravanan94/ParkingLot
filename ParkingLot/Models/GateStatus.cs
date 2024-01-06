@@ -1,6 +1,9 @@
 ﻿namespace ParkingLot.Models
 {
-    public class GateStatus
+    public enum GateStatus
     {
+        Free,
+        Blocked,
+        OutOfService
     }
 }
